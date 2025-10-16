@@ -1,0 +1,15 @@
+
+services:
+  - type: web
+    name: nuri-piknik
+    env: python
+    region: oregon
+    branch: main
+    rootDir: .
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "gunicorn -k eventlet -w 1 -b 0.0.0.0:$PORT app.server:app"
+    envVars:
+      - key: SECRET_KEY
+        value: "nuri-prod-secret-change-me"
+      - key: MAX_USERS
+        value: "50"

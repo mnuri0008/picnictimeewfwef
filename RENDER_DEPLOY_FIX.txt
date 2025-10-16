@@ -1,0 +1,9 @@
+
+RENDER DEPLOY FIX (Python 3.13 compatible - GEVENT)
+
+1. Push this version to GitHub.
+2. requirements.txt uses gevent instead of eventlet.
+3. In Render:
+   Start Command:
+       gunicorn -k gevent -w 1 -b 0.0.0.0:$PORT app.server:app
+4. Clear build cache and redeploy.
